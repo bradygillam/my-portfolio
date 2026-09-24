@@ -287,6 +287,49 @@
             color: #aaaaff;
         }
 
+        .image-carousel {
+            width: 100%;
+            height: 620px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .image-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .left {
+            left: 10px;
+        }
+
+        .right {
+            right: 10px;
+        }   
+
 
         /* =========================
         EXTRA PROJECTS
@@ -386,6 +429,80 @@
             }
         }
     </style>
+
+    <script>
+        const carousels = [
+            {
+                images: [
+                    "img/vp1.png",
+                    "img/vp2.png",
+                    "img/vp3.png",
+                    "img/vp4.png",
+                    "img/vp5.png"
+                ],
+                currentImage: 0
+            },
+            {
+                images: [
+                    "img/bz1.png",
+                    "img/bz2.png",
+                    "img/bz3.png",
+                    "img/bz4.png",
+                    "img/bz5.png",
+                    "img/bz6.png",
+                ],
+                currentImage: 0
+            },
+            {
+                images: [
+                ],
+                currentImage: 0
+            },
+            {
+                images: [
+                    "img/pl1.png",
+                    "img/pl2.png",
+                    "img/pl3.png",
+                    "img/pl4.png",
+                    "img/pl5.png",
+                    "img/pl6.png",
+                ],
+                currentImage: 0
+            },
+            {
+                images: [
+                    "img/ac1.png",
+                    "img/ac2.png",
+                    "img/ac3.png",
+                    "img/ac4.png",
+                    "img/ac5.png",
+                    "img/ac6.png",
+                    "img/ac7.png",
+                ],
+                currentImage: 0
+            }
+
+
+        ];
+
+        function changeImage(carouselNumber, direction) {
+            const carousel = carousels[carouselNumber]
+
+            carousel.currentImage += direction;
+
+            if (carousel.currentImage >= carousel.images.length) {
+                carousel.currentImage = 0;
+            }
+
+            if (carousel.currentImage < 0) {
+                carousel.currentImage = carousel.images.length - 1;
+            }
+
+            document.getElementById(
+                `carousel-image-${carouselNumber}`
+            ).src = carousel.images[carousel.currentImage];
+        }
+    </script>
 </head>
 
 <body>
@@ -558,8 +675,12 @@
 
                 <article class="project">
 
-                    <div class="project-image">
-                        <img src="111111.PNG">
+                    <div class="image-carousel">
+                        <button class="arrow left" onclick="changeImage(0, -1)">❮</button>
+
+                        <img id="carousel-image-0" src="img/vp1.png">
+
+                        <button class="arrow right" onclick="changeImage(0, 1)">❯</button>
                     </div>
 
                     <div class="project-content">
@@ -592,8 +713,12 @@
 
                 <article class="project">
 
-                    <div class="project-image">
-                        <img src="Blitztorm Portfolio.gif">
+                    <div class="image-carousel">
+                        <button class="arrow left" onclick="changeImage(1, -1)">❮</button>
+
+                        <img id="carousel-image-1" src="img/bz1.png">
+
+                        <button class="arrow right" onclick="changeImage(1, 1)">❯</button>
                     </div>
 
                     <div class="project-content">
@@ -627,8 +752,12 @@
 
                 <article class="project">
 
-                    <div class="project-image">
-                        GAME SCREENSHOT
+                    <div class="image-carousel">
+                        <button class="arrow left" onclick="changeImage(2, -1)">❮</button>
+
+                        <img id="carousel-image-2" src="x.png">
+
+                        <button class="arrow right" onclick="changeImage(2, 1)">❯</button>
                     </div>
 
                     <div class="project-content">
@@ -665,8 +794,12 @@
 
                 <article class="project">
 
-                    <div class="project-image">
-                        <img src="Powerless Portfolio.gif">
+                    <div class="image-carousel">
+                        <button class="arrow left" onclick="changeImage(3, -1)">❮</button>
+
+                        <img id="carousel-image-3" src="img/pl1.png">
+
+                        <button class="arrow right" onclick="changeImage(3, 1)">❯</button>
                     </div>
 
                     <div class="project-content">
@@ -706,8 +839,12 @@
 
                 <article class="project">
 
-                    <div class="project-image">
-                        <img src="Anger Clanker Portfolio.gif">
+                    <div class="image-carousel">
+                        <button class="arrow left" onclick="changeImage(4, -1)">❮</button>
+
+                        <img id="carousel-image-4" src="img/ac1.png">
+
+                        <button class="arrow right" onclick="changeImage(4, 1)">❯</button>
                     </div>
 
                     <div class="project-content">
